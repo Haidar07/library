@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrowed Books</title>
+</head>
+<body>
+    {% include "navbars/navbaruser.html" %}
+    <hr>
+
+<div class="row">
+    <div class="col-md">
+    {% if All_Books %}
+    {% csrf_token %}
+        <div class="card card-body container">
+            <table class="table table-hover table-condensed table-striped table-bordered">
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Physical Address</th>
+                    <th>Borrowed In</th>
+                    <th>Expiry date</th>
+                    <th>Return</th>
+                </tr>
+                
+                {% for book in All_Books %}
+                <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.category}}</td>
+                    <td>{{book.Physical_Address}}</td>
+                    <td>{{book.borrow_date}}</td>
+                    <td>{{book.expiry_date}}</td>
+                    <td><a href="{% url 'return' book.id %}">Return?</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<center><h3 class="text-center w-75">Please note that you have to return the book before the expiry date, otherwise you will be fined and will be not allowed to borrow another book</h3></center>
+{%else%} 
+<br>
+<br>
+<br>
+<h2 class = "text-center p-3 mb-2 bg-success text-white" >No Borrowed Books</h2>
+{%endif%}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrowed Books</title>
+</head>
+<body>
+    {% include "navbars/navbaruser.html" %}
+    <hr>
+<br>
+<br>
+{% if s %}
+<h2 class="p-3 bg-success text-white" style = 'font-size: 35px;text-align:center;'>Book was Borrowed Successfully!</h2>
+<br><br>
+
+<div class="options" style="text-align:center">
+    <a href="../../afterlogin" class="btn btn-primary btn-lg active" style="border-radius: 0%;" role="button" aria-pressed="true">Borrow Another Book</a><br><br>
+</div>
+
+{%else%}
+<br>
+<br>
+<h2 class="p-3 bg-danger text-white" style = 'font-size: 35px;text-align:center;'>You can't Borrow a new Book Because you either didn't return the previous one in its due date or you are borrowing more than 3 books</h2>
+<br><br>
+{%endif%}
+
+<div class="options" style="text-align:center">    
+    <a href="../../borrowed" class="btn btn-primary btn-lg active" style="border-radius: 0%;" role="button" aria-pressed="true">View All Borrowed Books</a><br><br>
+</div>
+

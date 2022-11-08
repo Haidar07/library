@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New York Library</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    {% include "navbars/navbar.html" %}
+    
+    <hr>
+    <br>    
+    <div>
+      <div class="col-md pb-4">
+      {% if All_Books %}
+      {% csrf_token %}
+          <div class="card card-body container">
+              <table class="table table-hover table-condensed table-striped table-bordered">
+                  <tr>
+                      <th>Book Title</th>
+                      <th>Author</th>
+                      <th>Category</th>
+                      <th>Physical Address</th>
+                  </tr>
+                  {% for book in All_Books %}
+                  <tr>
+                      <td>{{book.title}}</td>
+                      <td>{{book.author}}</td>
+                      <td>{{book.category}}</td>
+                      <td>{{book.Physical_Address}}</td>
+    
+                  </tr>
+                  {% endfor %}
+              </table>
+          </div>
+      </div>
+    {%else%}
+    <center><h1>No Books in the Library</h1></center>
+    {%endif%}
+    </div>
+    </body>

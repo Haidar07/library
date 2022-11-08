@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+
+<div style="font-family: 'Roboto', sans-serif">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src= "{% static "images/logo.png" %}" class="d-inline-block align-top" alt="" style="height: 100px; padding-left: 20px;">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="container-fluid justify-content-center">
+            <form class="d-flex" method = 'POST' action = "{% url 'book_search_home' %}">
+              {% csrf_token %}
+              <label class=" w-50 align-self-center" for = "searchby">Search by:</label>
+              <select class=" w-50 form-control" name="searchby">
+                <option value="title">title</option>
+                <option value="author">author</option>
+                <option value="category">category</option>
+              </select>
+              <div>&nbsp</div>
+              <input class="form-control me-2" name = 'search-result' type="search" placeholder="Search" aria-label="Search">
+        
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+
+        <div  class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav"> </div> 
+            <div class="navbar-nav">
+                <a href="/" ><button type="button" class="btn btn-outline-success">Home</button></a>
+                <a href="allbooks" ><button type="button" class="btn btn-outline-primary">All&nbspBooks</button></a>
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-outline-primary">Login</button></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="adminlogin">as Admin</a>
+                      <a class="dropdown-item" href="userlogin">as User</a>
+                      <div class="dropdown-divider"></div>
+                    </div>
+                  </li>
+                  <a href="/about"><button type="button" class="btn btn-outline-primary">About</button></a>
+            </div>
+
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

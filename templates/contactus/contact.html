@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New York Library</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style>
+input[type=text], input[type=email], textarea {
+ width: 100%;
+ padding: 10px 15px;
+ margin: 6px 0;
+ display: inline-block;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+
+{% include "navbars/navbar.html" %}
+<hr>
+
+<form action="" method="post" class="container">
+    {% csrf_token %}
+    {{ form }}
+    <input style="font-weight: bold;" type="submit" value="Send Email">
+ </form>
+
+<br>
+<br>
